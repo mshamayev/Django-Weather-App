@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html lang="en"
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter City">
+        <input type="text" name="state" placeholder="Enter State">
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <div class="weather_container">
+        {% if weather_data %}
+            <div class="city-container">
+                {% include 'weather_app/city_weather.html' with weather_data=weather_data daily_forecasts=daily_forecasts %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
